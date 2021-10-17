@@ -37,7 +37,7 @@ module.exports = class Usuario extends Model {
         );
     }
     static relacionar(modelos) {
-        modelos.Ciudad.hasMany(modelos.Usuario, { foreignKey: "ciudadId" });
-        modelos.Usuario.belongsTo(modelos.Ciudad, { foreignKey: "ciudadId" });
+        modelos.Ciudad.hasMany(modelos.Usuario, { foreignKey: "ciudad_id" });
+        modelos.Usuario.belongsTo(modelos.Ciudad, { foreignKey: "ciudad_id" });
     }
 };

@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require("sequelize");
 
-module.exports = class Ciudad extends Model {
+module.exports = class Categoria extends Model {
     static init(sequelize) {
         return super.init(
             {
@@ -8,16 +8,14 @@ module.exports = class Ciudad extends Model {
                     type: DataTypes.STRING(1234),
                     allowNull: false,
                 },
+              
             },
             {
                 sequelize,
-                tableName: "ciudades",
-                modelName: "Ciudad",
+                tableName: "categorias",
+                modelName: "Categoria",
             }
         );
     }
-    static relacionar(modelos) {
-        modelos.Pais.hasMany(modelos.Ciudad, { foreignKey: "pais_id" });
-        modelos.Ciudad.belongsTo(modelos.Pais, { foreignKey: "pais_id" });
-    }
+ 
 };
