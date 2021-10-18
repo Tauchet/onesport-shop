@@ -20,11 +20,11 @@ module.exports = class Usuario extends Model {
                     type: DataTypes.STRING(1234),
                     allowNull: false,
                 },
-                fechaNacimiento: {
+                fecha_nacimiento: {
                     type: DataTypes.STRING(1234),
                     allowNull: true,
                 },
-                tipoUsuario: {
+                tipo_usuario: {
                     type: DataTypes.STRING(1234),
                     allowNull: false,
                 },
