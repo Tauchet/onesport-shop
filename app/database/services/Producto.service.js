@@ -40,18 +40,22 @@ module.exports = {
         return listaProductos;
     },
 
-    async eliminarProducto({id}){
+
+    async buscarProducto({id}){
         console.log(id);
-        /*
+        const productoEncontrado = await modelos.Producto.findById(id);
+        console.log(productoEncontrado.nombre);
+        //return productoEncontrado;
+
+    },
+
+    async eliminarProducto({id}){
         const productoEliminado = await modelos.Producto.destroy({
             where: {
                 id: id
             }
         });
-
         return "Producto eliminado";
-
-        */
     },
 
 };
