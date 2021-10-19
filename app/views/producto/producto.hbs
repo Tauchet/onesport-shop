@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>productos</title>
+</head>
+<body>
+    <h4>Productos</h4>
+    <form action="" method="post">
+        <label for="nombre">Nombre:</label>
+        <input name="nombre" type="text">
+        <label for="precio">Precio:</label>
+        <input name="precio" type="text">
+        <label for="descripcion">Descripcion:</label>
+        <input name="descripcion" type="text">
+        <label for="unidadesDisponibles">Unidades disponibles:</label>
+        <input name="unidadesDisponibles" type="text">
+
+        <button>Crear producto</button>
+
+
+    </form>
+    
+    <form action="/producto/eliminar-producto/{{id}}" method="POST">
+
+        <div id="mostrarProductos">
+
+        <table>
+            <tr>
+                <td>Nombre</td>
+                <td>Precio</td>
+                <td>Descripcion</td>
+                <td>Unidades Disponibles</td>
+                <td>Actualizar</td>
+                <td>Eliminar</td>
+            </tr>
+
+            {{#each listaProductos}}
+                <tr>
+                    
+                    <td>{{nombre}}</td>
+                    <td>{{precio}}</td>
+                    <td>{{descripcion}}</td>
+                    <td>{{unidades_disponibles}}</td>
+                    <td><button>Actualizar</button></td>
+                    <td><button href='../routes/producto' name="id" value="{{id}}">{{id}}</button></td>
+                    
+                </tr>
+            {{/each}} 
+        
+        </table>  
+
+    </div>
+    </form>
+  
+<a href='https://yehudakatz.com/'>See Website</a>
+
+</body>
+</html>

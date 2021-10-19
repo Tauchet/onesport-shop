@@ -15,9 +15,9 @@ router.post("*", async function (request, response) {
     }
     const result = await UsuarioServicio.registrarUsuario(request.body);
     if (result) {
-        response.end("REGISTRADO");
+        response.end("SE CREO CON EXITO");
     } else {
-        response.end("YA EXISTE");
+        response.end(result);
     }
 });
 

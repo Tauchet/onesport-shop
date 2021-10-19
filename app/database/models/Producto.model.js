@@ -14,7 +14,7 @@ module.exports = class Producto extends Model {
                 },
                 descripcion: {
                     type: DataTypes.STRING(1234),
-                    allowNull: false,
+                    allowNull: true,
                 },
                 unidades_disponibles: {
                     type: DataTypes.INTEGER,

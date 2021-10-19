@@ -12,6 +12,7 @@ app.use(express.urlencoded());
 // Rutas
 app.use("/login", require("./routes/login.route"));
 app.use("/registro", require("./routes/registro.route"));
+app.use("/producto", require("./routes/producto.route"));
 app.get("*", function (request, response) {
     response.send("NOT FOUND!");
 });
