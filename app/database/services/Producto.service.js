@@ -1,61 +1,105 @@
+const { Op } = require("sequelize");
 const { modelos } = require("../database");
 const validator = require("validator");
 
 module.exports = {
-
-        crearProducto ({nombre, precio,descripcion, unidadesDisponibles}){
-
+    async actualizarProducto({ productoId, nombre, precio, descripcion, unidades_disponibles }) {
         //Si se crea el producto
-        if(validator.isEmpty(nombre)){
-            return "Debe ingresar un nombre";
+        if (validator.isEmpty(nombre)) {
+            return { error: "Debe ingresar un nombre", field: "nombre" };
         }
-        if(validator.isEmpty(precio)){
-            return "Debe ingresar un precio";
+        if (validator.isEmpty(precio)) {
+            return { error: "Debe ingresar un precio", field: "precio" };
         }
-        if(validator.isEmpty(unidadesDisponibles)){
-            return "Debe ingresar las unidades disponibles";
+        if (validator.isEmpty(unidades_disponibles)) {
+            return { error: "Debe ingresar las unidades disponibles", field: "unidadesDisponibles" };
         }
 
-        const productoCreado = modelos.Producto.create({
+        const productoEncontrado = await modelos.Producto.findOne({ where: { id: productoId } });
+        if (productoEncontrado === null || productoEncontrado === undefined) {
+            return { error: "No existe el producto" };
+        }
+
+        productoEncontrado.nombre = nombre;
+        productoEncontrado.precio = precio;
+        productoEncontrado.descripcion = descripcion;
+        productoEncontrado.unidades_disponibles = unidades_disponibles;
+        await productoEncontrado.save();
+
+        return { success: true, data: productoEncontrado.dataValues };
+    },
+
+    async crearProducto({ nombre, precio, descripcion, unidades_disponibles, imagenes = null }) {
+        //Si se crea el producto
+        if (validator.isEmpty(nombre)) {
+            return { error: "Debe ingresar un nombre", field: "nombre" };
+        }
+        if (validator.isEmpty(precio)) {
+            return { error: "Debe ingresar un precio", field: "precio" };
+        }
+        if (validator.isEmpty(unidades_disponibles)) {
+            return { error: "Debe ingresar las unidades disponibles", field: "unidadesDisponibles" };
+        }
+
+        const productoCreado = await modelos.Producto.create({
             nombre,
             precio,
             descripcion,
-            unidades_disponibles: unidadesDisponibles,
+            unidades_disponibles: unidades_disponibles,
         });
 
-        if(productoCreado){
-            return "Se creo";
-        }else{
-            return false;
+        if (imagenes != null && imagenes.length > 0) {
+            for (var imagenId of imagenes) {
+                const imagenCreada = await modelos.Imagen.create({
+                    url_imagen: imagenId,
+                    producto_id: productoCreado.id,
+                });
+            }
         }
 
-        //Si no se crea
-
+        if (productoCreado === null || productoCreado === undefined) {
+            return { error: "Ha ocurrido un error inesperado." };
+        }
+        return { success: true, data: productoCreado.dataValues };
     },
 
-    async mostrarProductos(){
+    async mostrarProductos(busqueda = null) {
+        const where =
+            busqueda == null
+                ? {}
+                : {
+                      nombre: {
+                          [Op.substring]: busqueda,
+                      },
+                  };
         const listaProductos = await modelos.Producto.findAll({
-            attributes: ['id','nombre','precio','descripcion','unidades_disponibles']
-        });    
+            attributes: ["id", "nombre", "precio", "descripcion", "unidades_disponibles"],
+            where: where,
+            include: {
+                model: modelos.Imagen,
+                as: "Imagens",
+            },
+        });
         return listaProductos;
     },
 
-
-    async buscarProducto({id}){
-        console.log(id);
-        const productoEncontrado = await modelos.Producto.findById(id);
-        console.log(productoEncontrado.nombre);
-        //return productoEncontrado;
-
-    },
-
-    async eliminarProducto({id}){
-        const productoEliminado = await modelos.Producto.destroy({
-            where: {
-                id: id
-            }
+    async buscarProducto({ id }) {
+        const productoEncontrado = await modelos.Producto.findOne({
+            where: { id },
+            include: {
+                model: modelos.Imagen,
+                as: "Imagens",
+            },
         });
-        return "Producto eliminado";
+        return productoEncontrado && productoEncontrado.dataValues ? productoEncontrado.dataValues : false;
     },
 
+    async eliminarProducto({ id }) {
+        await modelos.Producto.destroy({
+            where: {
+                id: id,
+            },
+        });
+        return true;
+    },
 };

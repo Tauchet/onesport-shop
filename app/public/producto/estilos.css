@@ -1,0 +1,29 @@
+.middle-container {
+    display: flex;
+    gap: 2rem;
+}
+
+#producto-images img {
+    width: 100%;
+    height: 100%;
+    border-radius: 2rem;
+}
+
+.producto-info {
+    flex: 1;
+    min-width: 50%;
+}
+
+.producto-titulo h1 {
+    font-size: 2.5rem;
+}
+
+.producto-titulo p {
+    font-size: 1.3rem;
+}
+
+.producto-titulo {
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #aaa;
+}

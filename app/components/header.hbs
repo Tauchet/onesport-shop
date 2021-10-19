@@ -1,0 +1,27 @@
+<header id="app-header">
+    <div class="app-header__content">
+        <div class="container">
+            <div class="app-header__logo">
+                <a href="/" style="text-decoration: none; color: white;"><h1>onesport</h1></a>
+            </div>
+            <div class="app-header__search">
+                <form method="GET">
+                    <div class="form-input">
+                        <input placeholder="Ingresar la búsqueda..." type="text" name="busqueda" required />
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                </form>
+            </div>
+            <div class="app-header__options">
+                {{#if usuario.conectado}}
+                    {{#if usuario.administrador}}
+                        <a href="/admin/productos"><i class="fas fa-cubes"></i></a>
+                    {{/if}}
+                    <a href="/cerrar">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a>
+                {{else}}
+                    <a href="/login"><i class="fas fa-user"></i> Iniciar Sesión</a>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</header>

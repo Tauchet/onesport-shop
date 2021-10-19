@@ -1,0 +1,97 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+            {{#if modificar}}
+                Modificar un producto
+            {{else}}
+                Crear un producto
+            {{/if}} - onesport</title>
+        <link rel="stylesheet" href="/public/global.css" />
+        <link rel="stylesheet" href="/public/formulario.css" />
+    </head>
+    <body>
+        <div id="app">
+            {{> header}}
+            <main>
+
+                <div class="middle-container">
+
+                    <a href="/admin/productos">Volver a ver los productos.</a>
+
+                    <div class="app-section-title">
+                        {{#if modificar}}
+                            <h2>Modificar Producto</h2>
+                        {{else}}
+                            <h2>Crear Producto</h2>
+                        {{/if}}
+                    </div>
+
+                    <form class="app-form-center" action="" method="POST" encType="multipart/form-data"  >
+
+                        {{#if error}}
+                            <div class="app-form-alert">
+                                <p>{{error}}</p>
+                            </div>
+                        {{else}}
+                            {{#if success}}
+                                <div class="app-form-alert success">
+                                    {{#if modificar}}
+                                        <p>¡Se ha guardado las modificaciones correctamente el producto!</p>
+                                    {{else}}
+                                        <p>¡Se ha creado correctamente el producto!</p>
+                                    {{/if}}
+                                </div>
+                            {{/if}}
+                        {{/if}}
+
+                        {{#if modificar}}
+                            <input name="productoId" type="text" value="{{modificar}}" hidden />
+                        {{/if}}
+
+                        <div class="app-form-input">
+                            <label for="nombre">Nombre:</label>
+                            <input name="nombre" type="text" value="{{#if formulario}}{{formulario.nombre}}{{/if}}" />
+                        </div>
+
+                        <div class="app-form-input">
+                            <label for="descripcion">Descripcion:</label>
+                            <textarea rows="4" name="descripcion" >{{#if formulario}}{{formulario.descripcion}}{{/if}}</textarea>
+                        </div>
+
+                        <div class="app-form-input">
+                            <label for="precio">Precio:</label>
+                            <input name="precio" type="number" value="{{#if formulario}}{{formulario.precio}}{{/if}}" />
+                        </div>
+
+                        <div class="app-form-input">
+                            <label for="unidades_disponibles">Unidades disponibles:</label>
+                            <input name="unidades_disponibles" type="number" value="{{#if formulario}}{{formulario.unidades_disponibles}}{{/if}}" />
+                        </div>
+
+                        {{#if modificar}}
+                        {{else}}
+                            <div class="app-form-input">
+                                <label for="imagenes">Imagenes:</label>
+                                <input name="imagenes" type="file" accept=".jpg,.jpge,.gif,.png" multiple/>
+                            </div>
+                        {{/if}}
+
+                        <button class="app-form-button center blue">
+                            {{#if modificar}}
+                                <p>Modificar Producto</p>
+                            {{else}}
+                                <p>Crear Producto</p>
+                            {{/if}}
+                        </button>
+
+                    </form>
+                </div>
+
+            </main>
+        </div>
+
+    </body>
+</html>

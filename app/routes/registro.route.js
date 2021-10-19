@@ -1,24 +1,27 @@
-const validator = require("validator");
 const express = require("express");
 const router = express.Router();
 
 const UsuarioServicio = require("../database/services/Usuario.service");
+
+router.use(function (request, response, next) {
+    if (request.session.usuario) {
+        response.redirect("/");
+        return;
+    }
+    next();
+});
 
 router.get("*", function (request, response) {
     response.render("registro");
 });
 
 router.post("*", async function (request, response) {
-    if (!validator.isEmail(request.body.email)) {
-        response.end("NO ES UN CORREO");
+    const resultado = await UsuarioServicio.registrarUsuario(request.body);
+    if (resultado.success) {
+        response.render("registro", { registro_estado: true });
         return;
     }
-    const result = await UsuarioServicio.registrarUsuario(request.body);
-    if (result) {
-        response.end("SE CREO CON EXITO");
-    } else {
-        response.end(result);
-    }
+    response.render("registro", { registro_estado: true, ...resultado });
 });
 
 module.exports = router;

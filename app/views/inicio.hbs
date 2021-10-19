@@ -1,0 +1,50 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Inicio - onesport</title>
+        <link rel="stylesheet" href="/public/global.css" />
+        <link rel="stylesheet" href="/public/inicio/estilos.css" />
+    </head>
+    <body>
+        <div id="app">
+            {{> header}}
+                <div class="app-header__bg">
+                    <div class="app-header__bg-overlay"></div>
+                    <div class="app-header__bg-img"></div>
+                </div>
+            <main>
+                <div class="container">
+                    <div class="app-section-title">
+                        <h2>Productos</h2>
+                    </div>
+                    <div class="app-product-list">
+                        {{#each productos}}
+                            <div class="product">
+                                <a href="/producto/{{id}}">
+                                    <div class="product-image">
+                                        {{#with Imagens.[0]}}
+                                            <img src="/public/productos-img/{{url_imagen}}" alt="" />
+                                        {{/with}}
+                                    </div>
+                                    <div class="product-content">
+                                        <div class="product-name">
+                                            <p>{{nombre}}</p>
+                                        </div>
+                                        <div class="product-description">
+                                            <p>{{descripcion}}</p>
+                                        </div>
+                                        <div class="product-price">
+                                            <p>${{precio}}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>
