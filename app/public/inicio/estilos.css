@@ -48,3 +48,24 @@
     grid-template-columns: repeat(5, 1fr);
     gap: 2rem;
 }
+
+.app-section-nav {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.nav-category {
+    background: #ddd;
+    color: #666;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+}
+
+.nav-category.active {
+    background: #333;
+    color: #ddd;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+}

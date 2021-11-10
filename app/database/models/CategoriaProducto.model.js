@@ -5,7 +5,6 @@ module.exports = class CategoriaProducto extends Model {
         return super.init(
             {
               
-              
             },
             {
                 sequelize,

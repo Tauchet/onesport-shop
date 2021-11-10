@@ -19,6 +19,7 @@ const modelos = {
     Telefono: require("./models/Telefono.model").init(sequelize),
     Categoria: require("./models/Categoria.model").init(sequelize),
     CategoriaProducto: require("./models/CategoriaProducto.model").init(sequelize),
+    Pregunta: require("./models/Pregunta.model").init(sequelize),
 };
 
 // Conectar las relaciones

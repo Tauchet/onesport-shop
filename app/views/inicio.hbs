@@ -19,6 +19,11 @@
                     <div class="app-section-title">
                         <h2>Productos</h2>
                     </div>
+                    <div class="app-section-nav">
+                        {{#each categorias}}
+                            <a class="nav-category{{#if activo}} active{{/if}}" href="{{url}}">{{nombre}}</a>
+                        {{/each}}
+                    </div>
                     <div class="app-product-list">
                         {{#each productos}}
                             <div class="product">

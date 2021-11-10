@@ -10,6 +10,10 @@ async function init() {
     const armenia = await Ciudad.create({ nombre: "Armenia", pais_id: colombia.id });
 
     console.log(colombia, armenia);
+    console.log("Se han registrado correctamente las bases de datos.");
+    
+    return true;
+
 }
 
 init();

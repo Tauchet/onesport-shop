@@ -3,7 +3,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Ver productos - onesport</title>
+        <title>Ver preguntas - onesport</title>
         <link rel="stylesheet" href="/public/global.css" />
         <link rel="stylesheet" href="/public/formulario.css" />
     </head>
@@ -19,30 +19,24 @@
 
                     <table class="app-table">
                         <tr>
-    
-                            <th>Nombre</th>
-                            <th>Precio</th>
+                            <th>Correo Electronico</th>
+                            <th>Asunto</th>
                             <th>Descripcion</th>
-                            <th>Unidades Disponibles</th>
                             <th>Acciones</th>
                         </tr>
 
-                        {{#each listaProductos}}
+                        {{#each preguntas}}
                             <tr>
-    
-                                <td>{{nombre}}</td>
-                                <td>{{precio}}</td>
+                                <td>{{email}}</td>
+                                <td>{{asunto}}</td>
                                 <td>{{descripcion}}</td>
-                                <td>{{unidades_disponibles}}</td>
                                 <td>
                                     <div class="app-table-actions">
-                                        <a class="app-table-action info" name="id" href="/admin/productos/{{id}}">Actualizar</a>
-                                        <form onSubmit="return confirm('¿Deseas eliminar este producto?') " action="/admin/productos/eliminar" method="POST">
-                                            <button class="app-table-action danger" name="id" value="{{id}}">Eliminar</button>
+                                        <form onSubmit="return confirm('¿Se ha solucionado la pregunta?') " action="/admin/preguntas/eliminar" method="POST">
+                                            <button class="app-table-action info" name="id" value="{{id}}">Confirmar</button>
                                         </form>
                                     </div>
                                 </td>
-
                             </tr>
                         {{/each}}
 

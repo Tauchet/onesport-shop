@@ -24,6 +24,7 @@
         "hbs-utils": "0.0.4",
         "multer": "^1.4.3",
         "mysql2": "^2.3.2",
+        "request": "^2.88.2",
         "sequelize": "^6.7.0",
         "validator": "^13.6.0"
     },

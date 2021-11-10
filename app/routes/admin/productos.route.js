@@ -9,7 +9,6 @@ async function crearOModificar(request, response) {
         conectado: request.session.usuario !== null && request.session.usuario !== undefined,
         administrador: request.session.usuario && request.session.usuario.tipo === "ADMINISTRADOR",
     };
-
     let resultado;
     var modificar = null;
     if (request.body.productoId) {
@@ -46,8 +45,15 @@ async function crearOModificar(request, response) {
         }
 
         resultado = await ProductoService.crearProducto({ ...request.body, imagenes });
+
+
     }
-    response.render("productos/modificar-producto", { formulario: request.body, usuario, registro_estado: true, modificar, ...resultado });
+    
+    const data = { formulario: request.body, usuario, registro_estado: true, modificar, ...resultado };
+    if (modificar && resultado.success) {
+        data.formulario = resultado.data;
+    }
+    response.render("productos/modificar-producto", data);
 }
 
 router.get("/crear", function (request, response) {
@@ -76,6 +82,7 @@ router.get("/:id", async function (request, response, next) {
     if (request.params.id) {
         const productoId = request.params.id;
         const productoEncontrado = await ProductoService.buscarProducto({ id: productoId });
+        console.log(productoEncontrado);
         if (productoEncontrado) {
             response.render("productos/modificar-producto", { usuario, modificar: productoId, formulario: { ...productoEncontrado } });
             return;

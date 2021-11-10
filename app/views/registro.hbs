@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="/public/global.css" />
         <link rel="stylesheet" href="/public/formulario.css" />
         <link rel="stylesheet" href="/public/login.css" />
+        <script src='https://www.google.com/recaptcha/api.js'></script>
     </head>
     <body>
         <div id="app">
@@ -29,7 +30,6 @@
                                 <div class="app-form-alert">
                                     <p>{{error}}</p>
                                 </div>
-
                             {{/if}}
 
                             <div class="app-form-input">
@@ -49,6 +49,10 @@
 
                             <div class="app-form-section">
                                 <p>¿Ya tienes una cuenta? <a href="/login">Iniciar Sesión</a></p>
+                            </div>
+
+                            <div style="margin-top: 1rem; text-align: center; display: flex; align-items: center; justify-content: center;">
+                                <div class="g-recaptcha" data-sitekey="6Ld-ciUdAAAAANGk2hVxK4-jhSLL-lWEyiVXcwgw"></div><br>
                             </div>
 
                             <button class="app-form-button">Registrarse</button>
