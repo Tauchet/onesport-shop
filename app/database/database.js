@@ -1,11 +1,17 @@
 const Sequelize = require("sequelize");
 
 // Declarar las conexiones
-const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USERNAME, process.env.DB_PASSWORD, {
-    host: process.env.DB_HOST,
-    dialect: "mysql",
-    logQueryParameters: true,
-});
+let sequelize = null;
+
+if (process.env && process.env.NODE_ENV === 'test') {
+    sequelize = new Sequelize('sqlite::memory:')
+} else {
+    sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USERNAME, process.env.DB_PASSWORD, {
+        host: process.env.DB_HOST,
+        dialect: "mysql",
+        logQueryParameters: true,
+    });
+}
 
 // Declarar los modelos
 const modelos = {

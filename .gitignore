@@ -2,3 +2,4 @@
 /docker/
 .env
 /app/public/productos-img
+/coverage
