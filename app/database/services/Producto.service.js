@@ -3,7 +3,7 @@ const { modelos } = require("../database");
 const validator = require("validator");
 
 module.exports = {
-    async actualizarProducto({ productoId, nombre, precio, descripcion, unidades_disponibles, categorias }) {
+    async actualizarProducto({ productoId, nombre, precio, descripcion, unidades_disponibles, categorias, oferta = 0, oferta_descripcion = null }) {
         //Si se crea el producto
         if (validator.isEmpty(nombre)) {
             return { error: "Debe ingresar un nombre", field: "nombre" };
@@ -76,6 +76,8 @@ module.exports = {
         productoEncontrado.precio = precio;
         productoEncontrado.descripcion = descripcion;
         productoEncontrado.unidades_disponibles = unidades_disponibles;
+        productoEncontrado.oferta = oferta;
+        productoEncontrado.oferta_descripcion = oferta_descripcion;
         await productoEncontrado.save();
 
         const producto = productoEncontrado.dataValues;
@@ -86,7 +88,7 @@ module.exports = {
         return { success: true, data: producto };
     },
 
-    async crearProducto({ nombre, precio, descripcion, unidades_disponibles, imagenes = null, categorias }) {
+    async crearProducto({ nombre, precio, descripcion, unidades_disponibles, oferta = 0, oferta_descripcion = null, imagenes = null, categorias }) {
         //Si se crea el producto
         if (validator.isEmpty(nombre)) {
             return { error: "Debe ingresar un nombre", field: "nombre" };
@@ -105,7 +107,9 @@ module.exports = {
             nombre,
             precio,
             descripcion,
-            unidades_disponibles: unidades_disponibles,
+            unidades_disponibles,
+            oferta,
+            oferta_descripcion
         });
 
         if (categorias.length > 1) {
@@ -140,6 +144,17 @@ module.exports = {
         return { success: true, data: productoCreado.dataValues };
     },
 
+    async buscarProductosPorId(ids) {
+        const listaProductos = await modelos.Producto.findAll({
+            where: {
+                id: {
+                    [Op.or]: ids
+                }
+            }
+        });
+        return listaProductos;
+    },
+
     async buscarProductosSugeridos(productoId, categorias = []) {
         if (categorias && categorias.length > 0) {
             const itemsCategorias = [];
@@ -155,7 +170,6 @@ module.exports = {
                 include: [{
                     model: modelos.Producto,
                     as: "Producto",
-                    attributes: ["id", "nombre", "precio", "descripcion", "unidades_disponibles"],
                     include: {
                         model: modelos.Imagen,
                         as: "Imagens",
@@ -185,7 +199,6 @@ module.exports = {
                 include: [{
                     model: modelos.Producto,
                     as: "Producto",
-                    attributes: ["id", "nombre", "precio", "descripcion", "unidades_disponibles"],
                     include: {
                         model: modelos.Imagen,
                         as: "Imagens",
@@ -202,7 +215,6 @@ module.exports = {
         }
 
         const listaProductos = await modelos.Producto.findAll({
-            attributes: ["id", "nombre", "precio", "descripcion", "unidades_disponibles"],
             where: where,
             include: [{
                 model: modelos.Imagen,

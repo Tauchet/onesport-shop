@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Producto - onesport</title>
         <link rel="stylesheet" href="/public/global.css" />
+        <link rel="stylesheet" href="/public/formulario.css" />
         <link rel="stylesheet" href="/public/producto/estilos.css" />
     </head>
     <body>
@@ -21,11 +22,26 @@
                         <div class="producto-info">
                             <div class="producto-titulo">
                                 <h1>{{ nombre }}</h1>
-                                <p>${{ precio }}</p>
+                                <strong>{{oferta_descripcion}}</strong>
+                                {{#if (ismin oferta 0)}}
+                                                <p>${{percentage precio oferta}}</p>
+                                                <p style="font-style: italic; text-decoration:line-through; font-size: 0.9rem">${{precio}}</p>
+                                            {{else}}
+                                                <p>${{precio}}</p>
+                                            {{/if}}
                             </div>
                             <div class="producto-descripcion">
                                 <p>{{descripcion}}</p>
                             </div>
+                            <form method="POST" action="/carrito/{{#if estaEnCarrito}}eliminar{{else}}agregar{{/if}}">
+                                <input type="text" value="{{id}}" name="id" hidden>
+                                {{#if estaEnCarrito}}
+                                    <button class="app-form-button gray" >ELIMINAR DEL CARRITO</button>
+                                {{else}}
+                                    
+                                    <button class="app-form-button" >AGREGAR AL CARRITO</button>
+                                {{/if}}  
+                            </form>
                         </div>
                     </div>
                     {{#if productosSugeridos}}
@@ -50,8 +66,14 @@
                                                 <p>{{descripcion}}</p>
                                             </div>
                                             <div class="product-price">
+                                            {{#if (ismin oferta 0)}}
+                                                <p>${{percentage precio oferta}}</p>
+                                                <p style="font-style: italic; text-decoration:line-through; font-size: 0.9rem">${{precio}}</p>
+                                            {{else}}
                                                 <p>${{precio}}</p>
-                                            </div>
+                                            {{/if}}
+                                        </div>
+                                            
                                         </div>
                                     </a>
                                 </div>

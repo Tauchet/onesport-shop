@@ -36,12 +36,18 @@
                                     <div class="product-content">
                                         <div class="product-name">
                                             <p>{{nombre}}</p>
+                                            <p class="product-discount">Oferta del {{oferta}}%</p>
                                         </div>
                                         <div class="product-description">
                                             <p>{{descripcion}}</p>
                                         </div>
                                         <div class="product-price">
-                                            <p>${{precio}}</p>
+                                            {{#if (ismin oferta 0)}}
+                                                <p>${{percentage precio oferta}}</p>
+                                                <p style="font-style: italic; text-decoration:line-through; font-size: 0.9rem">${{precio}}</p>
+                                            {{else}}
+                                                <p>${{precio}}</p>
+                                            {{/if}}
                                         </div>
                                     </div>
                                 </a>

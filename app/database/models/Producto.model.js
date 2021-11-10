@@ -20,6 +20,14 @@ module.exports = class Producto extends Model {
                     type: DataTypes.INTEGER,
                     allowNull: false,
                 },
+                oferta: {
+                    type: DataTypes.INTEGER,
+                    allowNull: true
+                },
+                oferta_descripcion: {
+                    type: DataTypes.STRING(1234),
+                    allowNull: true,
+                }
             },
             {
                 sequelize,

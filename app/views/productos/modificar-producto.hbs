@@ -87,6 +87,14 @@
                         </div>
 
                         {{#if modificar}}
+                            <div class="app-form-input">
+                                <label for="oferta">Oferta (%):</label>
+                                <input name="oferta" type="number" value="{{#if formulario}}{{formulario.oferta}}{{/if}}" />
+                            </div>
+                            <div class="app-form-input">
+                                <label for="oferta_descripcion">Descripción de Oferta:</label>
+                                <textarea rows="2" name="oferta_descripcion" >{{#if formulario}}{{formulario.oferta_descripcion}}{{/if}}</textarea>
+                            </div>
                         {{else}}
                             <div class="app-form-input">
                                 <label for="imagenes">Imagenes:</label>

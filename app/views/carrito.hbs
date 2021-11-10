@@ -1,0 +1,56 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Carrito - onesport</title>
+        <link rel="stylesheet" href="/public/global.css" />
+        <link rel="stylesheet" href="/public/formulario.css" />
+        <style>
+            .middle-container {
+                margin-top: 2rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            {{> header}}
+              <div class="middle-container">
+                  <div class="app-section-title">
+                      <h1>Carrito</h1>
+                  </div>
+                  {{#if carritoVacio}}
+                    <div class="center" style="text-align: center;">
+                        <p style="margin-bottom: 1rem;">¡Aún no tienes nada agregado al carrito!</p>
+                        <a  href="/">Click para ir al inicio y buscar tu producto.</a>
+                    </div>
+                  {{else}}
+                  <table class="app-table">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Acciones</th>
+                        </tr>
+
+                        {{#each productos}}
+                            <tr>
+    
+                                <td><a href="/producto/{{id}}">{{nombre}}</a></td>
+                                <td>{{precio}}</td>
+                                <td>
+                                    <div class="app-table-actions">
+                                        <form onSubmit="return confirm('¿Deseas eliminar este producto del carrito?') " action="/carrito/eliminar" method="POST">
+                                            <input name="redirect_url" value="/carrito" hidden />
+                                            <button class="app-table-action danger" name="id" value="{{id}}">Eliminar</button>
+                                        </form>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        {{/each}}
+
+                    </table>
+                  {{/if}}
+        </div>
+    </body>
+</html>

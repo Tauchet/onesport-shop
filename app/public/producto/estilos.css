@@ -46,6 +46,10 @@
     border-bottom: 1px solid #aaa;
 }
 
+.product-discount {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
 
 .product {
     max-width: 250px;

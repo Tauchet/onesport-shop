@@ -82,7 +82,6 @@ router.get("/:id", async function (request, response, next) {
     if (request.params.id) {
         const productoId = request.params.id;
         const productoEncontrado = await ProductoService.buscarProducto({ id: productoId });
-        console.log(productoEncontrado);
         if (productoEncontrado) {
             response.render("productos/modificar-producto", { usuario, modificar: productoId, formulario: { ...productoEncontrado } });
             return;

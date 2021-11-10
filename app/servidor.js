@@ -11,6 +11,12 @@ const CategoriaService = require("./database/services/Categoria.service");
 const hbs = require("hbs");
 const hbsutils = require("hbs-utils")(hbs);
 
+hbs.registerHelper('ismin', function (value, max) {
+    return value > max;
+});  
+hbs.registerHelper('percentage', function (value, percentage) {
+    return value * (1 - (percentage / 100));
+});  
 hbsutils.registerPartials(path.join(__dirname, "components"));
 
 // Configuración de aplicación
@@ -30,6 +36,7 @@ app.use(
 );
 
 // Rutas
+app.use("/carrito", require("./routes/carrito.route"));
 app.use("/contacto", require("./routes/contacto.route"));
 app.use("/cerrar", require("./routes/cerrar.route"));
 app.use("/login", require("./routes/login.route"));
@@ -40,14 +47,14 @@ app.get("/producto/:id", async function (request, response) {
     const usuario = {
         ...request.session.usuario,
         conectado: request.session.usuario !== null && request.session.usuario !== undefined,
-        administrador: request.session.usuario && request.session.usuario.tipo === "ADMINISTRADOR",
+        administrador: request.session.usuario && request.session.usuario.tipo === "ADMINISTRADOR"
     };
     if (request.params.id) {
         const productoId = request.params.id;
         const producto = await ProductoService.buscarProducto({ id: productoId });
         const productosSugeridos = await ProductoService.buscarProductosSugeridos(productoId, producto.categoriasIds);
         if (producto) {
-            response.render("producto", { usuario, ...producto, productosSugeridos });
+            response.render("producto", { usuario, ...producto, productosSugeridos, estaEnCarrito: request.session && request.session.carrito && request.session.carrito.includes(request.params.id) });
             return;
         }
     }

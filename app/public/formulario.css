@@ -38,6 +38,10 @@
     color: #fff;
 }
 
+.app-form-button.gray {
+    background-color: #777;
+}
+
 .app-form-button:hover {
     color: rgba(0, 0, 0, 0.5);
 }
