@@ -5,9 +5,10 @@
     "main": "app/servidor.js",
     "scripts": {
         "test": "jest --coverage",
-        "sonar":  "node sonar-project.js",
+        "sonar": "node sonar-project.js",
         "start": "node .",
-        "iniciar": "nodemon .",
+        "local:migrate": "cross-env NODE_ENV=local node ./setup/configuracion.js",
+        "local": "cross-env NODE_ENV=local node .",
         "reiniciar": "node ./setup/configuracion.js"
     },
     "jest": {
@@ -15,17 +16,18 @@
         "coveragePathIgnorePatterns": [
             "/node_modules/"
         ],
-        "testResultsProcessor":  "jest-sonar-reporter"
+        "testResultsProcessor": "jest-sonar-reporter"
     },
     "jestSonar": {
-        "reportPath":  "coverage",
-        "reportFile":  "test-reporter.xml",
-        "indent":  4
+        "reportPath": "coverage",
+        "reportFile": "test-reporter.xml",
+        "indent": 4
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "apminsight": "^2.2.1",
         "bcrypt": "^5.0.1",
         "cookie-parser": "^1.4.5",
         "dotenv": "^10.0.0",
@@ -44,6 +46,7 @@
         "validator": "^13.6.0"
     },
     "devDependencies": {
+        "cross-env": "^7.0.3",
         "jest": "^27.3.1",
         "jest-sonar-reporter": "^2.0.0",
         "nodemon": "^2.0.13",
