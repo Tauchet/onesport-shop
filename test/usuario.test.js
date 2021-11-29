@@ -2,7 +2,7 @@ const database = require("../app/database/database");
 const UsuarioServicio = require("../app/database/services/Usuario.service");
 
 // Primero que se ejcutaz
-beforeEach(async () => {
+beforeAll(async () => {
     
     // Iniciar base de datos
     const { Pais, Ciudad, Usuario } = database.modelos;
