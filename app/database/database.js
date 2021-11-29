@@ -5,11 +5,6 @@ let sequelize = null;
 
 if (process.env && process.env.NODE_ENV === "test") {
   sequelize = new Sequelize("sqlite::memory:");
-} else if (process.env && process.env.NODE_ENV === "local") {
-  sequelize = new Sequelize({
-    dialect: "sqlite",
-    storage: "./docker/persistent",
-  });
 } else {
   sequelize = new Sequelize(
     process.env.DB_DATABASE,
