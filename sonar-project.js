@@ -1,6 +1,8 @@
 require("dotenv").config();
 const sonarqubeScanner = require("sonarqube-scanner");
 
+// Configuración del servicio
+
 sonarqubeScanner(
   {
     serverUrl: process.env.HOST_SONAR_URL || "http://127.0.0.1:80",
