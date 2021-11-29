@@ -5,11 +5,10 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
-
     runs-on: self-hosted
 
     strategy:
@@ -18,16 +17,16 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm i
-    - run: npm test
-    - run: cp /home/workspace/.env ./.env
-    - run: pm2 stop 0
-    - run: pm2 start 0
-    - run: pm2 save
-    
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - run: npm i
+      - run: npm test
+      - run: cp /home/workspace/.env ./.env
+      - run: npm run sonar
+      - run: pm2 stop 0
+      - run: pm2 start 0
+      - run: pm2 save

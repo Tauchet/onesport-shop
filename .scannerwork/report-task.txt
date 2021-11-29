@@ -1,0 +1,6 @@
+projectKey=onesport-shop
+serverUrl=http://104.131.31.150
+serverVersion=8.9.3.48735
+dashboardUrl=http://104.131.31.150/dashboard?id=onesport-shop
+ceTaskId=AX1qXLkd2hbsspSDKvSm
+ceTaskUrl=http://104.131.31.150/api/ce/task?id=AX1qXLkd2hbsspSDKvSm

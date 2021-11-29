@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1636546998778" clover="3.2.0">
-  <project timestamp="1636546998778" name="All files">
+<coverage generated="1638166529141" clover="3.2.0">
+  <project timestamp="1638166529141" name="All files">
     <metrics statements="90" coveredstatements="82" conditionals="26" coveredconditionals="18" methods="20" coveredmethods="20" elements="136" coveredelements="120" complexity="0" loc="90" ncloc="90" packages="3" files="13" classes="13"/>
     <package name="database">
       <metrics statements="11" coveredstatements="10" conditionals="6" coveredconditionals="5" methods="0" coveredmethods="0"/>
-      <file name="database.js" path="C:\Users\migue\Desktop\Software III\onesport-shop\app\database\database.js">
+      <file name="database.js" path="C:\Users\PANDA\Desktop\onesport-shop\app\database\database.js">
         <metrics statements="11" coveredstatements="10" conditionals="6" coveredconditionals="5" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
@@ -21,13 +21,13 @@
     </package>
     <package name="database.models">
       <metrics statements="51" coveredstatements="51" conditionals="0" coveredconditionals="0" methods="18" coveredmethods="18"/>
-      <file name="Categoria.model.js" path="C:\Users\migue\Desktop\Software III\onesport-shop\app\database\models\Categoria.model.js">
+      <file name="Categoria.model.js" path="C:\Users\PANDA\Desktop\onesport-shop\app\database\models\Categoria.model.js">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
       </file>
-      <file name="CategoriaProducto.model.js" path="C:\Users\migue\Desktop\Software III\onesport-shop\app\database\models\CategoriaProducto.model.js">
+      <file name="CategoriaProducto.model.js" path="C:\Users\PANDA\Desktop\onesport-shop\app\database\models\CategoriaProducto.model.js">
         <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -37,7 +37,7 @@
         <line num="20" count="1" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
       </file>
-      <file name="Ciudad.model.js" path="C:\Users\migue\Desktop\Software III\onesport-shop\app\database\models\Ciudad.model.js">
+      <file name="Ciudad.model.js" path="C:\Users\PANDA\Desktop\onesport-shop\app\database\models\Ciudad.model.js">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -45,7 +45,7 @@
         <line num="20" count="1" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
       </file>
-      <file name="Compra.model.js" path="C:\Users\migue\Desktop\Software III\onesport-shop\app\database\models\Compra.model.js">
+      <file name="Compra.model.js" path="C:\Users\PANDA\Desktop\onesport-shop\app\database\models\Compra.model.js">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -53,7 +53,7 @@
         <line num="28" count="1" type="stmt"/>
         <line num="29" count="1" type="stmt"/>
       </file>
-      <file name="Imagen.model.js" path="C:\Users\migue\Desktop\Software III\onesport-shop\app\database\models\Imagen.model.js">
+      <file name="Imagen.model.js" path="C:\Users\PANDA\Desktop\onesport-shop\app\database\models\Imagen.model.js">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -61,25 +61,25 @@
         <line num="21" count="1" type="stmt"/>
         <line num="22" count="1" type="stmt"/>
       </file>
-      <file name="Pais.model.js" path="C:\Users\migue\Desktop\Software III\onesport-shop\app\database\models\Pais.model.js">
+      <file name="Pais.model.js" path="C:\Users\PANDA\Desktop\onesport-shop\app\database\models\Pais.model.js">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
       </file>
-      <file name="Pregunta.model.js" path="C:\Users\migue\Desktop\Software III\onesport-shop\app\database\models\Pregunta.model.js">
+      <file name="Pregunta.model.js" path="C:\Users\PANDA\Desktop\onesport-shop\app\database\models\Pregunta.model.js">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
       </file>
-      <file name="Producto.model.js" path="C:\Users\migue\Desktop\Software III\onesport-shop\app\database\models\Producto.model.js">
+      <file name="Producto.model.js" path="C:\Users\PANDA\Desktop\onesport-shop\app\database\models\Producto.model.js">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
       </file>
-      <file name="ProductoCompra.model.js" path="C:\Users\migue\Desktop\Software III\onesport-shop\app\database\models\ProductoCompra.model.js">
+      <file name="ProductoCompra.model.js" path="C:\Users\PANDA\Desktop\onesport-shop\app\database\models\ProductoCompra.model.js">
         <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -89,7 +89,7 @@
         <line num="30" count="1" type="stmt"/>
         <line num="31" count="1" type="stmt"/>
       </file>
-      <file name="Telefono.model.js" path="C:\Users\migue\Desktop\Software III\onesport-shop\app\database\models\Telefono.model.js">
+      <file name="Telefono.model.js" path="C:\Users\PANDA\Desktop\onesport-shop\app\database\models\Telefono.model.js">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -97,7 +97,7 @@
         <line num="21" count="1" type="stmt"/>
         <line num="22" count="1" type="stmt"/>
       </file>
-      <file name="Usuario.model.js" path="C:\Users\migue\Desktop\Software III\onesport-shop\app\database\models\Usuario.model.js">
+      <file name="Usuario.model.js" path="C:\Users\PANDA\Desktop\onesport-shop\app\database\models\Usuario.model.js">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -108,7 +108,7 @@
     </package>
     <package name="database.services">
       <metrics statements="28" coveredstatements="21" conditionals="20" coveredconditionals="13" methods="2" coveredmethods="2"/>
-      <file name="Usuario.service.js" path="C:\Users\migue\Desktop\Software III\onesport-shop\app\database\services\Usuario.service.js">
+      <file name="Usuario.service.js" path="C:\Users\PANDA\Desktop\onesport-shop\app\database\services\Usuario.service.js">
         <metrics statements="28" coveredstatements="21" conditionals="20" coveredconditionals="13" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
